@@ -28,7 +28,7 @@ module ClockworkComicPDF
 
     def initialize_content(options = {})
       self.page_header = PageHeader.new(options[:page_header])
-      self.cover = Cover.new(options[:cover])
+      self.cover = Cover.new(options[:cover]) if options[:cover]
       self.versions = Versions.new(options[:versions])
       self.sections = Sections.new(options[:sections])
       self.font_size = options[:font_size]
