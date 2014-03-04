@@ -6,7 +6,6 @@ class Hash
     if size == 2 && self[:val] && self[:type]
       return self[:val].to_f.send(self[:type])
     end
-    puts self
     fail ClockworkComicPDF::UndefinedKeyError,
          'measurement must contain only :val and :type'
   end

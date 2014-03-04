@@ -50,7 +50,6 @@ module ClockworkComicPDF
     end
 
     def calc_set_height(pdf)
-      puts pdf.bounds.height
       size = 0
       image_set.each { |img| size += img.height + @min_space }
       size
