@@ -27,6 +27,7 @@ module ClockworkComicPDF
     end
 
     def print_comic_pages(pdf, version, comic_pages)
+      @min_space = 18
       puts comic_pages.name
       if comic_pages.print_section_intro
         print_section_break(pdf, comic_pages.name)
@@ -35,6 +36,7 @@ module ClockworkComicPDF
       Dir["#{section_dir}*.*"].each do |image|
         print_comic_image(pdf, version, image)
       end
+      print_image_set(pdf) if image_set.size > 0
     end
 
     def print_section_break(pdf, text)
@@ -47,15 +49,40 @@ module ClockworkComicPDF
       pdf.text_box(text, options)
     end
 
+    def calc_set_height(pdf)
+      puts pdf.bounds.height
+      size = 0
+      image_set.each { |img| size += img.height + @min_space }
+      size
+    end
+
+    def image_set
+      @image_set ||= []
+    end
+    attr_writer :image_set
+
     def print_comic_image(pdf, version, image)
-      new_page(pdf)
       name = make_name(image)
-      page_index << { page: current_page, name: "#{name}" } if printing_body
       content = [[name], [{ image: image, scale: 72.0 / version.dpi }]]
       table = Prawn::Table.new(content, pdf, cell_style: { borders: [] },
                                              position: :center)
-      pdf.move_down((pdf.bounds.height - table.height) / 2.0)
-      table.draw
+      c_height = calc_set_height(pdf)
+      print_image_set(pdf) if (c_height + table.height) > pdf.bounds.height
+      image_set << table
+      if printing_body
+        page_index << { page: current_page + 1, name: "#{name}" }
+      end
+    end
+
+    def print_image_set(pdf)
+      new_page(pdf)
+      set_height = calc_set_height(pdf) - @min_space
+      pdf.move_down((pdf.bounds.height - set_height) / 2.0)
+      image_set.each do |img|
+        img.draw
+        pdf.move_down @min_space
+      end
+      self.image_set = []
     end
 
     def make_name(file_path)
