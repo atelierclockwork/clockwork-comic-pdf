@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'clockworkcomicpdf'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.platform    = Gem::Platform::RUBY
   s.date        = '2014-02-27'
   s.summary     = 'Clockwork Comic PDF'
