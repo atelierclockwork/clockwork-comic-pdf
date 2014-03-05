@@ -7,11 +7,11 @@ module ClockworkComicPDF
        :versions, :sections, :font_size, :cover]
     end
 
-    def initialize(options = {})
-      check_options(options.keys, valid_options)
-      initialize_options(options)
-      initialize_content(options)
-    end
+    # def initialize(options = {})
+      # check_options(options.keys, valid_options)
+      # initialize_options(options)
+      # initialize_content(options)
+    # end
 
     private
 
