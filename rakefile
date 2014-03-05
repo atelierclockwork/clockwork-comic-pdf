@@ -1,3 +1,10 @@
 task :build do
   `gem build ./ClockworkComicPDF.gemspec`
 end
+
+task :test do
+  system('clear;rubocop')
+  require_relative 'lib/clockworkcomicpdf.rb'
+  Dir.chdir('test')
+  ClockworkComicPDF.init_book_with_yaml 'test.yml'
+end
