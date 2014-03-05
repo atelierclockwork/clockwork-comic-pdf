@@ -11,6 +11,13 @@ module ClockworkComicPDF
   # variable storage for the book class
   class Book
     include OptionValidation, BookValidation, BookInit
+
+    attr_accessor :toc_font_size
+
+    def initialize(options = {})
+      check_valid(options)
+    end
+
     def font
       @font ||= 'Helvetica'
     end
