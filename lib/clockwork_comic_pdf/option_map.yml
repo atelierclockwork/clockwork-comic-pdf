@@ -1,0 +1,41 @@
+:book:
+  - :name: :font
+    :default: Arial
+    :type: :String
+  - :name: :info
+    :type: :String
+  - :name: :base_file_name
+    :type: :String
+  - :name: :page_size
+    :type: :Array
+    :default:
+      - 612
+      - 792    
+  - :name: :margin
+    :type: :Points
+    :default: 18
+  - :name: :offset_from_spine
+    :type: :Points
+    :default: 0
+  - :name: :print_toc
+    :type: :Boolean
+    :default: true
+  - :name: :toc_font_size
+    :type: :Points
+    :default: 12
+  - :name: :print_pagenum
+    :default: true
+    :type: :Boolean
+  - :name: :page_header
+    :type: :PageHeader
+    :default: :null
+  - :name: :versions
+    :type: :Array
+  - :name: :sections
+    :type: :Array
+  - :name: :font_size
+    :type: :Points
+    :default: 12
+  - :name: :cover
+    :type: :Cover
+    :default: :null
