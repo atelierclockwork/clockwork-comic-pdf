@@ -1,4 +1,4 @@
-:book:
+ClockworkComicPDF::Book:
   - :name: :font
     :default: Arial
     :type: :String
@@ -28,7 +28,7 @@
     :type: :Boolean
   - :name: :page_header
     :type: :PageHeader
-    :default: :null
+    :default: !null
   - :name: :versions
     :type: :Array
   - :name: :sections
@@ -38,4 +38,4 @@
     :default: 12
   - :name: :cover
     :type: :Cover
-    :default: :null
+    :default: !null
