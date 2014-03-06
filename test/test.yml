@@ -1,0 +1,64 @@
+:base_file_name: Clockwork Comic PDF Demo
+:info:
+  :Title: Clockwork Comic PDF Demo
+  :Author: Michael Skiba
+:page_size:
+  - :val: 4
+    :type: :in
+  - :val: 6
+    :type: :in
+:margin:
+ - :val: .25
+   :type: :in
+ - :val: .5
+   :type: :in
+ - :val: .75
+   :type: :in
+ - :val: 1.0
+   :type: :in
+:offset_from_spine:
+  :val: 0.5
+  :type: :in
+:font: Panic Sans
+:font_size: 18
+:print_toc: true
+:print_pagenum: true
+:page_header:
+  :left_text: Clockwork Comic PDF
+  :right_text: Demo Text
+  :align: :center
+  :size: 12
+:versions:
+  - :name: print
+    :dpi: 300
+  - :name: web
+    :dpi: 72
+    :trim_offset: true
+:sections:
+  - :name: Title Page
+    :type: :formatted_text_box
+    :file: ./pages/title.yml
+    :options:
+      :align: :center
+      :valign: :center
+      :at: :bounds_top_left
+      :width: :bounds_width
+      :height: :bounds_height
+      :leading: 14
+      :size: 14
+  - :name: "Sample Page Layout"
+    :type: :comic_pages
+    :directory: main
+    :print_section_intro: false
+  - :name: About the Program
+    :type: :text_box
+    :file: ./pages/about.txt
+    :options:
+      :align: :center
+      :valign: :center
+      :at:
+        - :bounds_center_width
+        - :bounds_top
+      :width_ratio: 1/2
+      :height: :bounds_height
+      :size: 18
