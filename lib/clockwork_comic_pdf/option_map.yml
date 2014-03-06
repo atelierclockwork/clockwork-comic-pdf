@@ -1,19 +1,26 @@
 ClockworkComicPDF::Book:
   :font:
-    :default: Arial
+    :default: Helvetica
     :type: String
   :info:
     :type: Hash
+    :default:
+      :Creator: Clockwork Comic PDF Engine
+      :Producer: Prawn
   :base_file_name:
     :type: String
   :page_size:
     :type: Points
     :default:
-      - 612
-      - 792    
+      - :val: 8.5
+        :type: :in
+      - :val: 11
+        :type: :in
   :margin:
     :type: Points
-    :default: 18
+    :default: 
+      :val: 0.5
+      :type: :in
   :offset_from_spine:
     :type: Points
     :default: 0
@@ -31,8 +38,10 @@ ClockworkComicPDF::Book:
     :required: false
   :versions:
     :type: Array
+    :default: []
   :sections:
     :type: Array
+    :default: []
   :font_size:
     :type: Points
     :default: 12
