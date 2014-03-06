@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.name        = 'clockworkcomicpdf'
   s.version     = '0.0.2'
   s.platform    = Gem::Platform::RUBY
-  s.date        = '2014-02-27'
+  s.date        = Date.today
   s.summary     = 'Clockwork Comic PDF'
   s.description = 'A Simple(ish) Ruby System for creating print and web ready PDF files.'
   s.authors     = ['Michael Skiba']
