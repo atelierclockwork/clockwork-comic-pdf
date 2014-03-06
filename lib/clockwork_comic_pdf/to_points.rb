@@ -11,6 +11,13 @@ class Hash
   end
 end
 
+# adds point conversion for arrays, converts every array element to points
+class Array
+  def to_points
+    map { |v| v.to_points }
+  end
+end
+
 # returns itself as is for fixnum
 class Fixnum
   def to_points
