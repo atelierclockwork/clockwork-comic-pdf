@@ -16,7 +16,8 @@ module ClockworkComicPDF
     end
 
     attr_accessor :toc_font_size, :print_toc, :font, :margin, :print_pagenum,
-                  :page_header, :cover, :base_file_name, :sections, :versions
+                  :page_header, :cover, :base_file_name, :sections, :versions,
+                  :section_intro_options
 
     attr_reader :font_size, :info, :page_size, :offset_from_spine
 
