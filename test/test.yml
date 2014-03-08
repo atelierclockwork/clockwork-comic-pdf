@@ -21,7 +21,6 @@
   :type: :in
 :font: Panic Sans
 :font_size: 18
-:print_toc: true
 :print_pagenum: true
 :page_header:
   :left_text: Clockwork Comic PDF
@@ -41,12 +40,12 @@
     - :val: 6
       :type: :in
   :path: Cover
-  :file: Cover.png  
+  :file: Cover.png
 :sections:
   - :name: Title Page
-    :type: :formatted_text_box
-    :file: ./pages/title.yml
+    :section_type: :formatted_text_box
     :options:
+      :file: ./pages/title.yml
       :align: :center
       :valign: :center
       :at: :bounds_top_left
@@ -54,13 +53,25 @@
       :height: :bounds_height
       :leading: 14
       :size: 14
-  - :name: "Sample Page Layout"
-    :type: :comic_pages
-    :directory: main
+  - :name: Table of Contents
+    :section_type: :table_of_contents
+    :options:
+      :align: :left
+      :valign: :center
+      :at: :bounds_top_left
+      :width_ratio: 2/3
+      :height: :bounds_height
+      :leading: 14
+      :size: 14
+  - :name: Sample Page Layout
+    :section_type: :comic_pages
     :print_section_intro: false
+    :content:
+        :directory: main
   - :name: About the Program
-    :type: :text_box
-    :file: ./pages/about.txt
+    :section_type: :text_box
+    :content:
+      :file: ./pages/about.txt
     :options:
       :align: :center
       :valign: :center
