@@ -18,15 +18,8 @@ class Array
   end
 end
 
-# returns itself as is for fixnum
-class Fixnum
-  def to_points
-    self
-  end
-end
-
-# returns itself as is for Float
-class Float
+# returns itself as is for all numeric classes
+class Numeric
   def to_points
     self
   end
