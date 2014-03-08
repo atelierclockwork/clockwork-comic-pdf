@@ -62,3 +62,24 @@ ClockworkComicPDF::Cover:
   :file:
     :type: String
     :required: true
+ClockworkComicPDF::PageHeader:
+  :size:
+    :type: Points
+    :default: 8
+  :left_text:
+    :type: String
+    :default: ''
+  :right_text:
+    :type: String
+    :default: ''
+  :align:
+    :type: Symbol
+    :default: :center
+  :v_align:
+    :type: Symbol
+    :default: :center
+  :height:
+    :type: Points
+    :default:
+      :val: .25
+      :type: :in
