@@ -6,6 +6,7 @@ require_relative 'pdf_toc_maker'
 require 'prawn'
 
 module ClockworkComicPDF
+  # TODO: rewrite section parsing code
   # this parses the sections of a book into a pdf file
   class PDFMaker
     include MeasurementParser, PDFSectionMaker, PDFTocMaker
