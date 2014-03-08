@@ -15,7 +15,7 @@ module ClockworkComicPDF
     # Loads the default options for the class
     def load_defaults
       o_list.each_pair do |k, v|
-        set_key(k, v[:default]) if  v[:default]
+        set_key(k, v[:default]) unless  v[:default].nil?
       end
     end
 
