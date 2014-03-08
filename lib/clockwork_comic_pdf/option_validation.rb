@@ -44,15 +44,15 @@ module ClockworkComicPDF
       send("#{k}=".to_sym, v)
     end
 
-    def load_key(k, v, r)
-      return set_key(k, v) if v.class.to_s == r
-      if o_map.keys.include? r then set_key(k, s_to_class(r).new(v))
+    def load_key(k, v, type)
+      return set_key(k, v) if v.class.to_s == type
+      if o_map.keys.include? r then set_key(k, s_to_class(type).new(v))
       else
-        case r
+        case type
         when 'Points' then set_key(k, v.to_points)
         when 'Boolean' then set_key(k, v == true)
         else
-          fail ArgumentError, "Invalid value #{v}"
+          fail ArgumentError, "Invalid value #{v}. #{type} expected."
         end
       end
     end
