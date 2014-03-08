@@ -18,7 +18,7 @@ ClockworkComicPDF::Book:
         :type: :in
   :margin:
     :type: Points
-    :default: 
+    :default:
       :val: 0.5
       :type: :in
   :offset_from_spine:
@@ -48,3 +48,17 @@ ClockworkComicPDF::Book:
   :cover:
     :type: ClockworkComicPDF::Cover
     :required: false
+ClockworkComicPDF::Cover:
+  :size:
+    :type: Points
+    :default:
+      - :val: 8.5
+        :type: :in
+      - :val: 11
+        :type: :in
+  :path:
+    :type: String
+    :required: true
+  :file:
+    :type: String
+    :required: true
