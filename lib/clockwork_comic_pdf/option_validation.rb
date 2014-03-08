@@ -26,7 +26,7 @@ module ClockworkComicPDF
       options.each_pair do |k, v|
         warn = "Unsupported key '#{k}' for '#{self.class}'"
         fail UndefinedKeyError, warn unless o_list.keys.include? k
-        load_key k, v, o_list[k][:type]
+        set_key(k, validate_key(v, o_list[k][:type]))
       end if options
     end
 
@@ -44,17 +44,26 @@ module ClockworkComicPDF
       send("#{k}=".to_sym, v)
     end
 
-    def load_key(k, v, type)
-      return set_key(k, v) if v.class.to_s == type
-      if o_map.keys.include? r then set_key(k, s_to_class(type).new(v))
+    def validate_key(v, type)
+      return v if v.class.to_s == type
+      o_map.keys.include?(type) ? s_to_class(type).new(v) :
+                                  check_types(v, type)
+    end
+
+    def check_types(v, type)
+      case type
+      when 'Points' then return v.to_points
+      when 'Boolean' then return v == true
+      when 'Numeric' then return check_number(v)
       else
-        case type
-        when 'Points' then set_key(k, v.to_points)
-        when 'Boolean' then set_key(k, v == true)
-        else
-          fail ArgumentError, "Invalid value #{v}. #{type} expected."
-        end
+        fail ArgumentError, "Invalid value #{v}. #{type} expected."
       end
+    end
+
+    def check_number(v)
+      warn = "Invalid value #{v}. Numeric type expected."
+      fail ArgumentError, warn unless v.is_a? Numeric
+      v
     end
 
     def s_to_class(s)
