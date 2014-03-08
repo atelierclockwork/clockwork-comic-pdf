@@ -85,5 +85,17 @@ ClockworkComicPDF::PageHeader:
       :type: :in
 ClockworkComicPDF::Versions:
 ClockworkComicPDF::Version:
+  :name:
+    :type: String
+    :required: true
+  :dpi:
+    :type: Numeric
+    :default: 72
+  :print_cover:
+    :type: Boolean
+    :default: false
+  :trim_offset:
+    :type: Boolean
+    :default: false
 ClockworkComicPDF::Sections:
 ClockworkComicPDF::Section:
