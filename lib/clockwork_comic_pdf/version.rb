@@ -3,8 +3,8 @@ require_relative 'option_validation'
 module ClockworkComicPDF
   # convienience class for parsing and holding version objects
   class Versions < Array
-    def initialize(options)
-      options.each do |param|
+    def initialize(versions)
+      versions.each do |param|
         self << Version.new(param)
       end
     end
