@@ -37,7 +37,7 @@ ClockworkComicPDF::Book:
     :type: ClockworkComicPDF::PageHeader
     :required: false
   :versions:
-    :type: Array
+    :type: ClockworkComicPDF::Versions
     :default: []
   :sections:
     :type: Array
@@ -83,3 +83,7 @@ ClockworkComicPDF::PageHeader:
     :default:
       :val: .25
       :type: :in
+ClockworkComicPDF::Versions:
+ClockworkComicPDF::Version:
+ClockworkComicPDF::Sections:
+ClockworkComicPDF::Section:

@@ -26,14 +26,17 @@ module ClockworkComicPDF
       options.each_pair do |k, v|
         warn = "Unsupported key '#{k}' for '#{self.class}'"
         fail UndefinedKeyError, warn unless o_list.keys.include? k
-        load_key k, v, o_list[k]
+        load_key k, v, o_list[k][:type]
       end if options
     end
 
     private
 
+    def o_map
+      YAML.load_file(File.join(__dir__, 'option_map.yml'))
+    end
+
     def o_list
-      o_map = YAML.load_file(File.join(__dir__, 'option_map.yml'))
       o_map[self.class.to_s]
     end
 
@@ -42,23 +45,20 @@ module ClockworkComicPDF
     end
 
     def load_key(k, v, r)
-      return set_key(k, v) if v.class == r[:type]
-      case r[:type]
-      when 'Points' then set_key(k, v.to_points)
-      when 'Boolean' then set_key(k, v == true)
+      return set_key(k, v) if v.class.to_s == r
+      if o_map.keys.include? r then set_key(k, s_to_class(r).new(v))
       else
-        check_ccpdf_classes(k, v, r)
+        case r
+        when 'Points' then set_key(k, v.to_points)
+        when 'Boolean' then set_key(k, v == true)
+        else
+          fail ArgumentError, "Invalid value #{v}"
+        end
       end
     end
 
-    def check_ccpdf_classes(k, v, r)
-      case r[:type]
-      when 'ClockworkComicPDF::PageHeader' then set_key(k, PageHeader.new(v))
-      when 'ClockworkComicPDF::Cover' then set_key(k, Cover.new(v))
-      else
-        fail "Invalid value #{v}" unless v.class.to_s == r[:type]
-        set_key(k, v)
-      end
+    def s_to_class(s)
+      s.split('::').reduce(Object) { |a, e| a.const_get e }
     end
 
     public
