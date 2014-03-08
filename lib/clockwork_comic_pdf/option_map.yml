@@ -24,12 +24,6 @@ ClockworkComicPDF::Book:
   :offset_from_spine:
     :type: Points
     :default: 0
-  :print_toc:
-    :type: Boolean
-    :default: true
-  :toc_font_size:
-    :type: Points
-    :default: 12
   :print_pagenum:
     :default: true
     :type: Boolean
@@ -48,6 +42,15 @@ ClockworkComicPDF::Book:
   :cover:
     :type: ClockworkComicPDF::Cover
     :required: false
+  :section_intro_options:
+    :type: Hash
+    :default:
+      :align: :center
+      :valign: :center
+      :at: :bounds_top_left
+      :width: :bounds_width
+      :height: :bounds_height
+      :size: 24
 ClockworkComicPDF::Cover:
   :size:
     :type: Points
@@ -84,6 +87,8 @@ ClockworkComicPDF::PageHeader:
       :val: .25
       :type: :in
 ClockworkComicPDF::Versions:
+  :type: Array
+  :default: []
 ClockworkComicPDF::Version:
   :name:
     :type: String
@@ -98,4 +103,27 @@ ClockworkComicPDF::Version:
     :type: Boolean
     :default: false
 ClockworkComicPDF::Sections:
+  :type: Array
+  :default: []
 ClockworkComicPDF::Section:
+  :section_type:
+    :type: Symbol
+    :required: true
+  :name:
+    :type: String
+    :required: true
+  :print_intro_page:
+    :type: Boolean
+    :default: false
+  :intro_page_options:
+    :type: Hash
+    :required: false
+  :include_in_toc:
+    :type: Boolean
+    :default: false
+  :content:
+    :type: Hash
+    :required: false
+  :options:
+    :type: Hash
+    :required: false
