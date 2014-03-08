@@ -30,6 +30,14 @@ module ClockworkComicPDF
       end if options
     end
 
+    # TODO: Update check_required method to use the option_map.yml info
+    def check_required(options = {})
+      options.each_pair do |key, val|
+        warn = "#{self.class} requires key #{key}"
+        fail UndefinedKeyError, warn if val.nil?
+      end
+    end
+
     private
 
     def o_map
@@ -68,24 +76,6 @@ module ClockworkComicPDF
 
     def s_to_class(s)
       s.split('::').reduce(Object) { |a, e| a.const_get e }
-    end
-
-    public
-
-    def check_options(options, valid_options)
-      options.each do |key|
-        unless valid_options.include? key
-          warn = "Unsupported key '#{key}' for #{self.class}"
-          fail UndefinedKeyError, warn
-        end
-      end
-    end
-
-    def check_required(options = {})
-      options.each_pair do |key, val|
-        warn = "#{self.class} requires key #{key}"
-        fail UndefinedKeyError, warn if val.nil?
-      end
     end
   end
 end
