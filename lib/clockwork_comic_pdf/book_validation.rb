@@ -1,8 +1,13 @@
 module ClockworkComicPDF
-  # Validation Module for Book Class
+  # Validates that all of the required variables exist for the book and all
+  # of it's elements, also cross checks to make sure all of the image files
+  # used in each version exist across all versions
   module BookValidation
+    # Checks for missing keys in the book and it's elements, then performs the
+    # image cross-check
     def validate
       validate_self
+      fail 'File name cannot be an empty string' if base_file_name.size == 0
       cover.validate_self if cover
       sections.each { |s| s.validate_self }
       versions.each { |v| v.validate_self }
@@ -13,6 +18,10 @@ module ClockworkComicPDF
       end
     end
 
+    private
+
+    # iterates over all of the versions and sections of the book and uses this
+    # to determine if there are any files that only exist in one version
     def image_mismatch
       mismatch = []
       files = version_files
