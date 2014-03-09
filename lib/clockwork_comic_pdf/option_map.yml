@@ -9,6 +9,7 @@ ClockworkComicPDF::Book:
       :Producer: Prawn
   :base_file_name:
     :type: String
+    :required: true
   :page_size:
     :type: Points
     :default:
