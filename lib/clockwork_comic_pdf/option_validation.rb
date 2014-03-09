@@ -22,13 +22,16 @@ module ClockworkComicPDF
     # Checks the options for valid keys and values and applies them to
     # the class
     def load_options(options = {})
-      puts "*#{self.class}"
       load_defaults
       options.each_pair do |k, v|
         warn = "Unsupported key '#{k}' for '#{self.class}'"
         fail UndefinedKeyError, warn unless o_list.keys.include? k
         set_key(k, validate_key(v, o_list[k][:type]))
       end if options
+    end
+
+    def validate_self
+      puts "validating #{self}"
     end
 
     # TODO: Update check_required method to use the option_map.yml info

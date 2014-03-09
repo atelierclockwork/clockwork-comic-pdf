@@ -20,14 +20,6 @@ module ClockworkComicPDF
     include OptionValidation
     attr_accessor :trim_offset, :print_cover, :name, :dpi
 
-    def validate
-      fail InvalidValueError, 'Each version must contain a name' unless name
-      fail InvalidValueError,
-           'Each version must contain a name' if name.length == 0
-      fail InvalidValueError,
-           'each version must specify a dpi value' unless dpi
-    end
-
     def initialize(options = {})
       load_options options
     end

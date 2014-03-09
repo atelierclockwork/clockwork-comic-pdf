@@ -16,10 +16,6 @@ module ClockworkComicPDF
       end
     end
 
-    def validate
-      each { |section| section.validate }
-    end
-
     def type_map
       { text: ClockworkComicPDF::Sections::SectionText,
         rich_text: ClockworkComicPDF::Sections::SectionRichText,

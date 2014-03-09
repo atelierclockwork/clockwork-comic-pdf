@@ -16,12 +16,6 @@ module ClockworkComicPDF
       @size = size.to_points
     end
 
-    def validate
-      fail InvalidValueError, 'Cover Must specify a file' unless file
-      fail InvalidValueError, 'Cover must specify a size' unless size
-      fail InvalidValueError, 'Cover must specify a path' unless path
-    end
-
     def initialize(options = {})
       load_options options
     end

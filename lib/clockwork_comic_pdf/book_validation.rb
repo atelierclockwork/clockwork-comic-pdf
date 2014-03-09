@@ -2,10 +2,10 @@ module ClockworkComicPDF
   # Validation Module for Book Class
   module BookValidation
     def validate
-      fail MissingValueError, 'base_file_name required' unless @base_file_name
-      cover.validate if cover
-      sections.validate
-      versions.validate
+      validate_self
+      cover.validate_self if cover
+      sections.each { |s| s.validate_self }
+      versions.each { |v| v.validate_self }
       miss = image_mismatch
       if miss.count > 0
         fail_s = "Image directories do no match: #{miss.join(', ')}"
@@ -55,9 +55,8 @@ module ClockworkComicPDF
 
     def section_files(check_ver)
       s_files = {}
-      [sections.front_matter, sections.body,
-       sections.end_matter].flatten.each do |sub|
-        if sub.is_a? SectionComicPages
+      sections.each do |sub|
+        if sub.is_a? ClockworkComicPDF::Sections::SectionImageSet
           s_files[sub] = get_comic_files(check_ver, sub)
         end
       end
@@ -65,7 +64,7 @@ module ClockworkComicPDF
     end
 
     def get_comic_files(check_ver, sub)
-      current_dir = "./#{check_ver.name}/#{sub.directory}/"
+      current_dir = "./#{check_ver.name}/#{sub.img_path}/"
       unless File.exist?(current_dir)
         fail InvalidValueError, "#{File.path(current_dir)} does not exist"
       end
