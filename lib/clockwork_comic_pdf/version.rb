@@ -1,16 +1,18 @@
 require_relative 'option_validation'
 
 module ClockworkComicPDF
-  # convienience class for parsing and holding version objects
+  # Convienience class for instantiating all of the version objects
   class Versions < Array
+    # replaces the initializer method with one that converts all of the
+    # items passed into it into a CCPDF version file
     def initialize(versions)
-      versions.each do |param|
-        self << Version.new(param)
+      versions.each do |v|
+        if v.is_a? ClockworkComicPDF::Version then self << v
+        elsif v.is_a? Hash then self << Version.new(v)
+        else
+          fail InvalidValueError, "#{v.class} not supported by Versions array"
+        end
       end
-    end
-
-    def validate
-      each { |version| version.validate }
     end
   end
 
