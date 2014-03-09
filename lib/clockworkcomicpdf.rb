@@ -6,7 +6,7 @@ require_relative 'clockwork_comic_pdf/errors'
 require_relative 'clockwork_comic_pdf/page_header'
 require_relative 'clockwork_comic_pdf/cover'
 require_relative 'clockwork_comic_pdf/version'
-require_relative 'clockwork_comic_pdf/section'
+require_relative 'clockwork_comic_pdf/sections'
 require_relative 'clockwork_comic_pdf/option_validation'
 require_relative 'clockwork_comic_pdf/pdf_maker'
 

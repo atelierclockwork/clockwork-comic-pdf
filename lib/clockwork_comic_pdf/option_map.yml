@@ -34,7 +34,7 @@ ClockworkComicPDF::Book:
     :type: ClockworkComicPDF::Versions
     :default: []
   :sections:
-    :type: Array
+    :type: ClockworkComicPDF::SectionArray
     :default: []
   :font_size:
     :type: Points
@@ -102,10 +102,10 @@ ClockworkComicPDF::Version:
   :trim_offset:
     :type: Boolean
     :default: false
-ClockworkComicPDF::Sections:
+ClockworkComicPDF::SectionArray:
   :type: Array
   :default: []
-ClockworkComicPDF::SectionText:
+ClockworkComicPDF::Sections::SectionText:
   :name:
     :type: String
     :required: true
@@ -118,13 +118,7 @@ ClockworkComicPDF::SectionText:
   :layout:
     :type: Hash
     :required: false
-  :print_intro_page:
-    :type: Boolean
-    :default: false
-  :intro_page_options:
-    :type: Hash
-    :required: false
-ClockworkComicPDF::SectionRichText:
+ClockworkComicPDF::Sections::SectionRichText:
   :name:
     :type: String
     :required: true
@@ -137,18 +131,18 @@ ClockworkComicPDF::SectionRichText:
   :layout:
     :type: Hash
     :required: false
-ClockworkComicPDF::SectionTableOfContents:
+ClockworkComicPDF::Sections::SectionTableOfContents:
   :name:
     :type: String
     :default: Table of Contents
   :layout:
     :type: Hash
     :required: false
-ClockworkComicPDF::SectionSeperator:
+ClockworkComicPDF::Sections::SectionSeperator:
   :num_pages:
     :type: Numeric
     :default: 1
-ClockworkComicPDF::SectionImageSet:
+ClockworkComicPDF::Sections::SectionImageSet:
   :name:
     :type: String
   :img_path:
@@ -162,9 +156,9 @@ ClockworkComicPDF::SectionImageSet:
     :defailt:
       :val: .25
       :type: in
-  :print_intro_page:
+  :print_intro:
     :type: Boolean
     :default: false
-  :intro_page_options:
+  :intro_options:
     :type: Hash
     :required: false

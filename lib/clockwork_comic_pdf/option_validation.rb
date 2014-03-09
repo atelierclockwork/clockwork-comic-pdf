@@ -22,6 +22,7 @@ module ClockworkComicPDF
     # Checks the options for valid keys and values and applies them to
     # the class
     def load_options(options = {})
+      puts "*#{self.class}"
       load_defaults
       options.each_pair do |k, v|
         warn = "Unsupported key '#{k}' for '#{self.class}'"

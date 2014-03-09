@@ -5,6 +5,7 @@ require_relative 'cover'
 require_relative 'version'
 require_relative 'option_validation'
 require_relative 'book_validation'
+require_relative 'sections'
 
 module ClockworkComicPDF
   # variable storage for the book class
