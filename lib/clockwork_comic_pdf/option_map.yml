@@ -105,25 +105,66 @@ ClockworkComicPDF::Version:
 ClockworkComicPDF::Sections:
   :type: Array
   :default: []
-ClockworkComicPDF::Section:
-  :section_type:
-    :type: Symbol
-    :required: true
+ClockworkComicPDF::SectionText:
   :name:
     :type: String
     :required: true
+  :file:
+    :type: String
+    :required: true
+  :include_in_toc:
+    :type: Boolean
+    :default: false
+  :layout:
+    :type: Hash
+    :required: false
   :print_intro_page:
     :type: Boolean
     :default: false
   :intro_page_options:
     :type: Hash
     :required: false
+ClockworkComicPDF::SectionRichText:
+  :name:
+    :type: String
+    :required: true
+  :file:
+    :type: String
+    :required: true
   :include_in_toc:
     :type: Boolean
     :default: false
-  :content:
+  :layout:
     :type: Hash
     :required: false
-  :options:
+ClockworkComicPDF::SectionTableOfContents:
+  :name:
+    :type: String
+    :default: Table of Contents
+  :layout:
+    :type: Hash
+    :required: false
+ClockworkComicPDF::SectionSeperator:
+  :num_pages:
+    :type: Numeric
+    :default: 1
+ClockworkComicPDF::SectionImageSet:
+  :name:
+    :type: String
+  :img_path:
+    :type: String
+    :required: true
+  :print_titles:
+    :type: Boolean
+    :default: true
+  :min_spacing:
+    :type: Points
+    :defailt:
+      :val: .25
+      :type: in
+  :print_intro_page:
+    :type: Boolean
+    :default: false
+  :intro_page_options:
     :type: Hash
     :required: false

@@ -43,8 +43,8 @@
   :file: Cover.png
 :sections:
   - :name: Title Page
-    :section_type: :formatted_text_box
-    :options:
+    :section_type: :rich_text
+    :layout:
       :file: ./pages/title.yml
       :align: :center
       :valign: :center
@@ -55,7 +55,7 @@
       :size: 14
   - :name: Table of Contents
     :section_type: :table_of_contents
-    :options:
+    :layout:
       :align: :left
       :valign: :center
       :at: :bounds_top_left
@@ -64,15 +64,14 @@
       :leading: 14
       :size: 14
   - :name: Sample Page Layout
-    :section_type: :comic_pages
+    :section_type: :image_set
     :print_section_intro: false
     :content:
-        :directory: main
+    :img_path: main
   - :name: About the Program
-    :section_type: :text_box
-    :content:
-      :file: ./pages/about.txt
-    :options:
+    :section_type: :text
+    :file: ./pages/about.txt
+    :layout:
       :align: :center
       :valign: :center
       :at:
