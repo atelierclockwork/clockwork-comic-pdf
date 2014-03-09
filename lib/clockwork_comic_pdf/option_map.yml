@@ -149,6 +149,9 @@ ClockworkComicPDF::Sections::SectionImageSet:
   :img_path:
     :type: String
     :required: true
+  :trim_title:
+    :type: Boolean
+    :default: true
   :print_titles:
     :type: Boolean
     :default: true

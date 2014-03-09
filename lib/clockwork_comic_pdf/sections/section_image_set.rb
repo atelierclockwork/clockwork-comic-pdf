@@ -6,7 +6,7 @@ module ClockworkComicPDF
     class SectionImageSet < Section
       include SectionLayout
       attr_accessor :print_intro, :intro_options, :img_path, :print_titles,
-                    :min_spacing
+                    :min_spacing, :trim_title
     end
   end
 end
