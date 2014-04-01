@@ -16,6 +16,11 @@ module ClockworkComicPDF
       load_options options
     end
 
+    def print
+      validate
+      versions.each { |v| print_version(v) }
+    end
+
     attr_accessor :toc_font_size, :print_toc, :font, :margin, :print_pagenum,
                   :page_header, :cover, :base_file_name, :sections, :versions,
                   :section_intro_options
@@ -51,6 +56,12 @@ module ClockworkComicPDF
 
     def offset_from_spine=(offset_from_spine)
       @offset_from_spine = offset_from_spine.to_points
+    end
+
+    private
+
+    def print_version(version)
+      puts version
     end
   end
 end

@@ -6,6 +6,5 @@ task :test do
   system('clear;rubocop')
   require_relative 'lib/clockworkcomicpdf.rb'
   Dir.chdir('test')
-  book = ClockworkComicPDF.init_book_with_yaml 'test.yml'
-  book.validate
+  ClockworkComicPDF.book_from_yaml 'test.yml'
 end

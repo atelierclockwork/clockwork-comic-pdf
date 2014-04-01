@@ -12,10 +12,8 @@ require_relative 'clockwork_comic_pdf/pdf_maker'
 
 # the base module for ClockworkComicPDF
 module ClockworkComicPDF
-  # VERSION "0.0.2"
   def book_from_yaml(book)
-    p_book = init_book_with_yaml(book)
-    PDFMaker.new(p_book).print
+    init_book_with_yaml(book).print
   end
   module_function :book_from_yaml
 
