@@ -63,7 +63,7 @@ module ClockworkComicPDF
     end
 
     def get_h_center(pdf, opt_in)
-      if !opt_in[:width_ratio].nil?
+      if opt_in[:width_ratio]
         box_width = opt_in[:width_ratio].to_r * pdf.bounds.width
       else
         box_width = opt_in[:width]
@@ -72,7 +72,7 @@ module ClockworkComicPDF
     end
 
     def get_v_center(pdf, options)
-      if !opt_in[:height_ratio].nil?
+      if opt_in[:height_ratio]
         box_height = opt_in[:height_ratio].to_r * pdf.bounds.height
       else
         box_height = opt_in[:height]

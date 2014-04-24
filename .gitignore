@@ -16,3 +16,6 @@ tmp
 .yardoc
 _yardoc
 doc/
+
+/test/Clockwork Comic PDF Demo - print.pdf
+/test/Clockwork Comic PDF Demo - web.pdf

@@ -6,6 +6,7 @@ require_relative 'version'
 require_relative 'option_validation'
 require_relative 'book_validation'
 require_relative 'sections'
+require_relative 'print_version'
 
 module ClockworkComicPDF
   # variable storage for the book class
@@ -61,7 +62,7 @@ module ClockworkComicPDF
     private
 
     def print_version(version)
-      puts version
+      PrintVersion.new(book: self, version: version)
     end
   end
 end

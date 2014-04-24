@@ -33,6 +33,7 @@
   - :name: web
     :dpi: 72
     :trim_offset: true
+    :print_cover: true
 :cover:
   :size:
     - :val: 8.25

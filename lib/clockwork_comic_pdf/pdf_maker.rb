@@ -109,8 +109,8 @@ module ClockworkComicPDF
       pdf.stroke do
         pdf.line [0, 0], [pdf.bounds.width, pdf.bounds.height]
         pdf.line [pdf.bounds.width, 0], [0, pdf.bounds.height]
-        pdf.line  [pdf.bounds.width / 2,
-                   pdf.bounds.height], [pdf.bounds.width / 2, 0]
+        pdf.line [pdf.bounds.width / 2,
+                  pdf.bounds.height], [pdf.bounds.width / 2, 0]
       end
     end
   end
