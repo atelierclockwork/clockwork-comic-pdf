@@ -3,22 +3,14 @@
   :Title: Clockwork Comic PDF Demo
   :Author: Michael Skiba
 :page_size:
-  - :val: 4
-    :type: :in
-  - :val: 6
-    :type: :in
+  - 4 in
+  - 6 in
 :margin:
- - :val: .25
-   :type: :in
- - :val: .5
-   :type: :in
- - :val: .75
-   :type: :in
- - :val: 1.0
-   :type: :in
-:offset_from_spine:
-  :val: 0.5
-  :type: :in
+ - .25 in
+ - .5 in
+ - .75 in
+ - 1.0 in
+:offset_from_spine: 0.5 in
 :font: Panic Sans
 :font_size: 18
 :print_pagenum: true
@@ -36,10 +28,8 @@
     :print_cover: true
 :cover:
   :size:
-    - :val: 8.25
-      :type: :in
-    - :val: 6
-      :type: :in
+    - 8.25 in
+    - 6 in
   :path: Cover
   :file: Cover.png
 :sections:

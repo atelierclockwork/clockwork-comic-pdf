@@ -1,4 +1,5 @@
 require 'prawn'
+require 'prawn/table'
 require 'yaml'
 
 require_relative 'clockwork_comic_pdf/book'

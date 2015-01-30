@@ -1,20 +1,18 @@
 require 'prawn/measurement_extensions'
 
 # adds point conversion function for hash values
-class Hash
+class String
   def to_points
-    if size == 2 && self[:val] && self[:type]
-      return self[:val].to_f.send(self[:type])
-    end
-    fail ClockworkComicPDF::UndefinedKeyError,
-         'measurement must contain only :val and :type'
+    value, unit = split(' ', 2)
+    value = value.to_f
+    value.respond_to?(unit) ? value.send(unit) : value
   end
 end
 
 # adds point conversion for arrays, converts every array element to points
 class Array
   def to_points
-    map { |v| v.to_points }
+    map(&:to_points)
   end
 end
 

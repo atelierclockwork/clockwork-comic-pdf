@@ -14,5 +14,5 @@ Gem::Specification.new do |s|
   s.homepage    =
     'http://www.atelierclockwork.net/ccpdf/'
   s.license       = 'MIT'
-  s.add_dependency('prawn', '~> 0.15.0')
+  s.add_dependency('prawn', '~> 1.3.0')
 end
