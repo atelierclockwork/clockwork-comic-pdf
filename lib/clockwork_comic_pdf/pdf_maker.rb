@@ -19,7 +19,7 @@ module ClockworkComicPDF
     end
 
     def initialize(book)
-      self.book = book
+      @book = book
     end
 
     def print

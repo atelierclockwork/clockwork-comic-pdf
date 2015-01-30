@@ -13,7 +13,7 @@ module ClockworkComicPDF
   class Book
     include OptionValidation, BookValidation
 
-    def initialize(options = {})
+    def initialize(**options)
       load_options options
     end
 

@@ -24,9 +24,8 @@ module ClockworkComicPDF
     # to determine if there are any files that only exist in one version
     def image_mismatch
       mismatch = []
-      files = version_files
-      files.each_pair do |key_v, sec|
-        mismatch.concat(scan_version(key_v, sec, files))
+      version_files.each_pair do |key_v, sec|
+        mismatch.concat(scan_version(key_v, sec, version_files))
       end
       mismatch.flatten
     end
@@ -55,21 +54,16 @@ module ClockworkComicPDF
     end
 
     def version_files
-      files = {}
-      versions.each do |version|
-        files[version] = section_files(version)
-      end
-      files
+      versions.reduce({}) { |a, e| a[e] = section_files(e) }
     end
 
     def section_files(check_ver)
-      s_files = {}
-      sections.each do |sub|
-        if sub.is_a? ClockworkComicPDF::Sections::SectionImageSet
-          s_files[sub] = get_comic_files(check_ver, sub)
+      sections.reduce({}) do |a, e|
+        if e.is_a? ClockworkComicPDF::Sections::SectionImageSet
+          a[e] = get_comic_files(check_ver, e)
         end
+        a
       end
-      s_files
     end
 
     def get_comic_files(check_ver, sub)
