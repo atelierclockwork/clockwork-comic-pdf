@@ -3,7 +3,7 @@ require 'prawn/measurement_extensions'
 # adds point conversion function for hash values
 class String
   def to_points
-    value, unit = split(' ', 2)
+    value, unit = scan(/[\d\.]+|\w+/)
     value = value.to_f
     value.respond_to?(unit) ? value.send(unit) : value
   end
