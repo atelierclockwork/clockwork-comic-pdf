@@ -5,7 +5,7 @@ class String
   def to_points
     value, unit = scan(/[\d\.]+|\w+/)
     value = value.to_f
-    value.respond_to?(unit) ? value.send(unit) : value
+    value.send(unit) if value.respond_to?(unit)
   end
 end
 
