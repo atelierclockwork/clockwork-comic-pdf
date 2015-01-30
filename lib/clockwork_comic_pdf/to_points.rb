@@ -5,7 +5,11 @@ class String
   def to_points
     value, unit = scan(/[\d\.]+|\w+/)
     value = value.to_f
-    value.send(unit) if value.respond_to?(unit)
+    case
+    when value.nil? then nil
+    when unit.nil? then value
+    when value.respond_to?(unit) then value.send(unit)
+    end
   end
 end
 
