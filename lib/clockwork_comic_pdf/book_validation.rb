@@ -6,16 +6,15 @@ module ClockworkComicPDF
     # Checks for missing keys in the book and it's elements, then performs the
     # image cross-check
     def validate
-      validate_self
-      fail 'File name cannot be an empty string' if base_file_name.size == 0
-      cover.validate_self if cover
-      sections.each { |s| s.validate_self }
-      versions.each { |v| v.validate_self }
-      miss = image_mismatch
-      if miss.count > 0
-        fail_s = "Image directories do no match: #{miss.join(', ')}"
-        fail MissingValueError, fail_s
-      end
+      # validate_self
+      # fail 'File name cannot be an empty string' if base_file_name.size == 0
+      # cover.validate_self if cover
+      # sections.each(&:validate_self)
+      # versions.each(&:v.validate_self)
+      # miss = image_mismatch
+      # fail_s = "Image directories do no match: #{miss.join(', ')}"
+      # fail MissingValueError, fail_s if miss.count > 0
+      # end
     end
 
     private
@@ -45,7 +44,7 @@ module ClockworkComicPDF
       sec_v.each_pair do |ss_key, ss_v|
         ss_v.each do |f|
           unless sec_c[ss_key].include? f
-            mismatch << "#{f} in section #{ss_key.name} exists " <<
+            mismatch << "#{f} in section #{ss_key.name} exists " \
                         "in #{v_name} but not #{c_name}"
           end
         end
@@ -58,11 +57,10 @@ module ClockworkComicPDF
     end
 
     def section_files(check_ver)
-      sections.reduce({}) do |a, e|
+      sections.each_with_object({}) do |a, e|
         if e.is_a? ClockworkComicPDF::Sections::SectionImageSet
           a[e] = get_comic_files(check_ver, e)
         end
-        a
       end
     end
 

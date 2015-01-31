@@ -57,7 +57,7 @@ This is a skeleton of a YAML file that will produce a book, assuming all of the 
        :type: :in
      - :val: .25
        :type: :in
-    :offset_from_spine:
+    :spine_offset:
       :val: 0.5
       :type: :in
     :font: Arial

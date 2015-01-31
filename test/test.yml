@@ -10,7 +10,7 @@
  - .5 in
  - .75 in
  - 1.0 in
-:offset_from_spine: 0.5 in
+:spine_offset: 0.5 in
 :font: Panic Sans
 :font_size: 18
 :print_pagenum: true

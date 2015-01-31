@@ -20,12 +20,12 @@ module ClockworkComicPDF
     end
 
     def print_cover
-      pdf.go_to_page 0 if pdf.page_number > 0
-      cover = book.cover
-      pdf.start_new_page(size: cover.size, margin: 0)
-      puts
-      pdf.image("#{cover.path}/#{version.name}/#{cover.file}",
-                at: pdf.bounds.top_left, scale: 72.0 / version.dpi.to_f)
+      # pdf.go_to_page 0 if pdf.page_number > 0
+      # cover = book.cover
+      # pdf.start_new_page(size: cover.size, margin: 0)
+      # puts
+      # pdf.image("#{cover.path}/#{version.name}/#{cover.file}",
+      #           at: pdf.bounds.top_left, scale: 72.0 / version.dpi.to_f)
     end
   end
 end

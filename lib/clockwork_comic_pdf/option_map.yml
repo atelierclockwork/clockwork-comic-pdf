@@ -22,7 +22,7 @@ ClockworkComicPDF::Book:
     :default:
       :val: 0.5
       :type: :in
-  :offset_from_spine:
+  :spine_offset:
     :type: Points
     :default: 0
   :print_pagenum:
